@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Criptografia</title>
+        <link rel="stylesheet" href="index.css">
+        <script src="index.js" defer></script>
+            
+    </head>
+
+    <body>
+        <header>
+            <h1>Criptografia</h1><br>
+            <h2>Cesar e base64</h2><br>
+        </header>
+
+         <main>
+
+            <div class="divGeral">
+                <div class="fraseNormal">
+                   <form id="fraseInserida" name="formFrase" action="" method="GET">
+                        <p>Insira a frase a ser codificada:</p>
+                        <p><input class="digitavel" type="text" name="frase"></p>
+                   </form>
+                    
+                </div>
+
+                <div id="escolhaGeral">
+                    <br>Escolha uma codificação<br> 
+                    <br><input type="radio" name="escolha" value="escolhaCesar"> Criptografia Cesar
+                    <br><input type="radio" name="escolha" value="escolhaCesar"> Criptografia Base64 <br>
+                </div>
+
+                <div class="mensagens">
+                    <form id="mensagemCod" name="msgCodificada" action="" method="GET">
+                        <p>Mensagem codificada: </p>
+                        <p><input class="digitavel" type="text" name="frase"></p>
+                   </form>
+                   
+                   <form id="mensagemDescod" name="msgDescodificada" action="" method="GET">
+                        <p>Mensagem descodificada: </p>
+                        <p><input class="digitavel" type="text" name="frase"></p>
+                    </form>
+
+                </div>
+                
+                
+            </div>
+
+         </main>   
+
+
+        <footer>
+                <br><p>©Copyright 2021 by NiltonJr. All rights reversed.</p>
+        </footer>
+    </body>
+</html>

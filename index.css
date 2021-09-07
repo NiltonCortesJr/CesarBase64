@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+  
+}
+
+html{
+    height: 100%;
+}
+body{
+    padding: 20px 20px 20px 20px;
+    height: 100vh;
+    background-color: rgb(129, 134, 129);
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    padding-top: 15px;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.divGeral {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+}
+
+#digitavel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 300px;
+
+}
+
+.fraseNormal{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+
+.mensagens{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-around;
+   padding: 20px 0 20px;
+   width: 100%;
+   align-items:flex-start;
+   height: 200px;
+   
+}
+
+#mensageCod{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+  
+    /*align-items:flex-start; */
+    height: 200px;
+    
+ }
+
+#fraseInserida, #mensagemCod, #mensagemDescod {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+header{
+    margin-bottom: 5px;
+}
