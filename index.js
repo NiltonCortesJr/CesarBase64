@@ -1,110 +1,58 @@
-// atribuição das variáveis globais
+/** Cifra de cesar
+ *  primeiro, armazenar a string
+    segundo, transformar a string em numero charCodeAt()
+    terceiro, avançar as casas
+    quarto, transformar sequencia de numeros em string
+    quinto, fazer um document.write no input
+ * 
+    Base64
+ */
 
-// armezena a mensagem passada pelo usuário
-var mensagem
-var input = document.getElementById('entradas')
 
-// retorna mensagem criptografada ou decriptografada
-var incremento
-var selecionado = document.getElementById('escolherMetodo')
+//espaço é igual a 32
+// declarando as variáveis
+var fraseDigitada = document.getElementById("entrada") 
+var codifica = document.getElementById("codifica")
+var decodifica = document.getElementById("decodifica")
+var metodo = document.getElementById("escolherMetodo")
+var metodoCesar = document.getElementById("avanco")
+var botao = document.getElementById("rodarBotao")
+var resultado = document.getElementById("digitavel")
 
-//Eventos
-document.getElementById('enviar').onclick = function(){
-    mensagem = input.value
-    let cripto = document.getElementById('cripto') , decripto = document.getElementById('met2')
-    if(cripto.checked){
-        if(selecionado.value == 1){
-            incremento = parseInt(document.getElementById('adiciona').value)
-            document.getElementById('resultadoCifra').innerText = cifrado()
-        }else if(selecionado.value == 2){
-            document.getElementById('resultadoBase').innerText = codificador()
-        }
-    }else if(decripto.checked){
-        if(selecionado.value == 1){
-            incremento = parseInt(document.getElementById('adiciona').value)
-            document.getElementById('resultadoCifra').innerText = decifrado()
-        }else if(selecionado.value == 2){
-            document.getElementById('resultadoBase').innerText = decodificado()
-        }
-    }
-}
+//
+var textoDigitado = fraseDigitada.value
 
-document.getElementById('escolherMetodo').onclick = function(){
-    if(selecionado.value == 1){
-        document.getElementById('cifra').style.display = 'flex'
-        document.getElementById('base').style.display = 'none'
-        document.querySelector("body").style.backgroundImage = 'url(image/destinations-rome-banner-mobile-1024x553.jpg)'
-        
-    }else if(selecionado.value == 2){
-        document.getElementById('base').style.display = 'flex'
-        document.getElementById('cifra').style.display = 'none'
-        document.querySelector("body").style.backgroundImage = 'url(image/MASTER-IMAGE-64bits-800x450.jpg)'
-        
-    }else if(selecionado.value == 0){
-        document.getElementById('base').style.display = 'none'
-        document.getElementById('cifra').style.display = 'none'
-        document.querySelector("body").style.backgroundImage = 'url(image/o-que-e-criptografia-de-ponta-a-ponta.jpg)'
-    }
-}
+metodo.addEventListener("change", function(){
+   if (metodo.value == "1"){
+      document.getElementById("seCesar").style.display = "block"
+   }
+   else{
+      document.getElementById("seCesar").style.display = "none"
+   }
+} )
 
-// motor para Cifra de César
-function cifrado() {
-    let mensagemArr = mensagem.split('')
-    let mensagemCifrada = []
-    let codificadorArr = []
+// mudar a mensagem do botao
+codifica.addEventListener("click", function(){
+   botao.textContent = "Codificar" 
+})
 
-    for (let i = 0; mensagemArr.length > i; i++) {
-        if (mensagemArr[i].charCodeAt() >= 65 && mensagemArr[i].charCodeAt() <= 90) {
-            let teste = ((mensagemArr[i].charCodeAt()) - 65 + incremento) % 26
-            codificadorArr.push(teste + 65)
-        } else if (mensagemArr[i].charCodeAt() >= 97 && mensagemArr[i].charCodeAt() <= 122) {
-            let teste = ((mensagemArr[i].charCodeAt()) - 97 + incremento) % 26
-            codificadorArr.push(teste + 97)
-        } else {
-            codificadorArr.push(mensagemArr[i].charCodeAt())
-        }
-    }
-    for (let j = 0; codificadorArr.length > j; j++) {
-        mensagemCifrada.push(String.fromCharCode(codificadorArr[j]))
-    }
-    return mensagemCifrada.join('')
+decodifica.addEventListener("click", function(){
+   botao.textContent = "Decodificar" 
+})
 
-}
-function decifrado() {
-    let mensagemArr = mensagem.split('')
-    let mensagemCifrada = []
-    let codificadorArr = []
+// Cofificando cifra de Cesar
 
-    for (let i = 0; mensagemArr.length > i; i++) {
-        if (mensagemArr[i].charCodeAt() >= 65 && mensagemArr[i].charCodeAt() <= 90) {
-            let teste = ((mensagemArr[i].charCodeAt()) - 65 - incremento) % 26
-            codificadorArr.push((teste < 0 ? teste + 26 : teste) + 65)
-        } else if (mensagemArr[i].charCodeAt() >= 97 && mensagemArr[i].charCodeAt() <= 122) {
-            let teste = ((mensagemArr[i].charCodeAt()) - 97 - incremento) % 26
-            codificadorArr.push((teste < 0 ? teste + 26 : teste) + 97)
-        } else {
-            codificadorArr.push(mensagemArr[i].charCodeAt())
-        }
-    }
-    for (let j = 0; codificadorArr.length > j; j++) {
-        mensagemCifrada.push(String.fromCharCode(codificadorArr[j]))
-    }
-    return mensagemCifrada.join('')
 
-}
 
-// motor para utilizar base64
+var arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-function codificador() {
-    let mensagemCodificada = btoa(mensagem)
 
-    return mensagemCodificada
+// Cria uma variavel com a letra desejada
+var letraDesejada = letras[i];
 
-}
+// Coloca a letra na tela
+document.write(letraDesejada + "=");
 
-function decodificado() {
-    let mensagemCodificada = atob(mensagem)
+//imprimindo o código da letra
+document.write(letraDesejada.charCodeAt());
 
-    return mensagemCodificada
-
-}
