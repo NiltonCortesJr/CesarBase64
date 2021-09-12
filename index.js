@@ -18,9 +18,9 @@ var metodo = document.getElementById("escolherMetodo")
 var metodoCesar = document.getElementById("avanco")
 var botao = document.getElementById("rodarBotao")
 var resultado = document.getElementById("digitavel")
+var resposta = ""
 
-//
-var textoDigitado = fraseDigitada.value
+
 
 metodo.addEventListener("change", function(){
    if (metodo.value == "1"){
@@ -42,17 +42,85 @@ decodifica.addEventListener("click", function(){
 
 // Cofificando cifra de Cesar
 
+function cifraDeCesar (texto, adiciona){
+   var adiciona = parseInt(adiciona)
+   var armazenaMensagem = texto.toLowerCase()
+   armazenaMensagem = armazenaMensagem.split("")
+   var mensagemCriptografada = []
+   var cesar = []
+
+   for (var i=0; i<armazenaMensagem.length; i++){
+      var msg = armazenaMensagem[i].charCodeAt()
+      if (msg != 32){
+         mensagemCriptografada.push(((msg - 97 + adiciona) % 26) + 97)
+      }
+      else {
+         mensagemCriptografada.push(msg)
+      }
+   }
+   for (var j=0; j<mensagemCriptografada.length; j++){
+      cesar.push(String.fromCharCode(mensagemCriptografada[j]))
+   }
+   return cesar.join("")
+}
+
+// Decofificando cifra de Cesar
+function decodicaCesar (texto, adiciona){
+   var adiciona = parseInt(adiciona)
+   var armazenaMensagem = texto.split("")
+   armazenaMensagem = armazenaMensagem.toLowerCase()
+   var mensagemCriptografada = []
+   var cesar = []
+
+   for (var i=0; i<armazenaMensagem.length; i++){
+      var msg = armazenaMensagem[i].charCodeAt()
+      if (msg != 32){
+         if ((msg - 97 + adiciona) >=0 ){
+            mensagemCriptografada.push(((msg - 97 - adiciona) % 26) + 97)
+         }
+         else{
+            mensagemCriptografada.push(((msg - 97 - adiciona) + 26) + 97)
+         }
+      }
+      else {
+         mensagemCriptografada.push(msg)
+      }
+   }
+   for (var j=0; j<mensagemCriptografada.length; j++){
+      cesar.push(String.fromCharCode(mensagemCriptografada[j]))
+   }
+   return cesar.join("")
+}
+
+//Click do botao
+document.getElementById("rodarBotao").addEventListener("click", function(event){
+   event.preventDefault()
+   
+   //Validando o checkbox Codificar/Decodificar
+   if(metodo.value == 1){
+      if(codifica.checked ){
+         resposta = cifraDeCesar(fraseDigitada.value, metodoCesar.value)
+         resultado.setAttribute("value",resposta)
+      }
+      else{
+         resposta = decodicaCesar(fraseDigitada.value, metodoCesar.value)
+         resultado.setAttribute("value",resposta)
+      }
+   }
+
+   // Codificação Base64
+   else if(metodo.value == 2){
+      if(codifica.checked ){
+         //console.log("ola")
+         resposta = window.btoa(fraseDigitada.value)
+         resultado.setAttribute("value",resposta)
+      }
+      else{
+         resposta = window.atob(fraseDigitada.value)
+         resultado.setAttribute("value",resposta)
+      }
+   }
+})
 
 
-var arr = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-
-// Cria uma variavel com a letra desejada
-var letraDesejada = letras[i];
-
-// Coloca a letra na tela
-document.write(letraDesejada + "=");
-
-//imprimindo o código da letra
-document.write(letraDesejada.charCodeAt());
 
